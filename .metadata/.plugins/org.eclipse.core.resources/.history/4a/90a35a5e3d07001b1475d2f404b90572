@@ -1,0 +1,76 @@
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+
+public class ProgramaSalasv2 
+{
+
+	public static void main(String[] args) 
+	{
+		String sala; //vai receber as salas
+		StringBuffer strSalas = new StringBuffer(); //vai reunir todas as salas
+		int tamanhoMaior= 0;
+		int qtListas=0;
+		int r, s; //variaveis de respostas
+
+		
+		Scanner teclado = new Scanner(System.in);
+		
+		
+		//Tela principal
+		do {
+			Object opcoes[] = {"Criar lista", "Ter relação de salas", "Excluir uma lista", "Sair"};
+			r = JOptionPane.showOptionDialog(null, "O que deseja fazer agora?", "Escolha!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+			
+
+			//ADICIONAR LISTA
+			if(r == 0) {
+				sala = JOptionPane.showInputDialog("Digite os números das salas, separando por um espaço: ");
+				strSalas.append(sala+"; ");
+				if(sala.length() > tamanhoMaior)
+					tamanhoMaior = sala.length();
+				qtListas++;
+				
+				do {
+					s = JOptionPane.showConfirmDialog(null, "Deseja adicionar uma nova lista?");
+					if(s == 0) 
+					{
+						sala = JOptionPane.showInputDialog("Digite as salas: ");
+						strSalas.append(sala+"; ");
+						if(sala.length() > tamanhoMaior)
+							tamanhoMaior = sala.length();
+						qtListas++;
+					}
+				}while(s == 0);
+			}
+			
+			if(r == 1)
+			{
+				if(qtListas < 3) {
+					JOptionPane.showMessageDialog(null, "Você precisa inserir pelo menos três listas para efetuar essa ação!");
+				}
+				else {
+					String listas[] = new String [qtListas];
+					String Salas = strSalas.toString();
+					listas = Salas.split("; ");
+					int salasUniao[][] = new int[qtListas][tamanhoMaior];
+					
+					for(int i=0; i <qtListas; i++) {
+						for(int j=0; j < tamanhoMaior; j++) {
+							
+						}
+					}
+				}
+
+			}
+			
+			if(r == 2) 
+			{
+				JOptionPane.showMessageDialog(null, "EXCLUINDO...");
+			}
+		}while(r != 1);
+	
+
+		teclado.close();
+	}
+
+}

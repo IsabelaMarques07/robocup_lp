@@ -1,0 +1,105 @@
+/* Oi, professor. Boa noite!
+Estou com algumas dúvidas no projeto da Robocup.
+Estou fazendo telas com o JOptionPane e em cada botão eu iria colocar uma function.
+Só que existem variáveis que são usadas nessas funções.
+Eu coloquei as variáveis fora da main e como static. A primeira dúvida é se está certo isso. Aparentemente, deu certo, mas não sei se é uma boa prática. Ou seria melhor colocar as variáveis dentro da main e passar pra função por meio dos atributos? */
+
+import javax.swing.JOptionPane;
+import java.util.Scanner;
+
+public class ProgramaSalasv2 
+{
+	static String sala; //vai receber as salas
+	static StringBuffer strSalas = new StringBuffer(); //vai reunir todas as salas
+	static int tamanhoMaior= 0;
+	static int qtListas=0;
+	static int r, s; //variaveis de respostas
+
+	public static void main(String[] args) 
+	{
+		
+		
+		Scanner teclado = new Scanner(System.in);
+		
+		
+		//Tela principal
+		do {
+			Object opcoes[] = { "Criar lista", 
+								"Ter relação de salas", 
+								"Excluir uma lista", 
+								"Sair"};
+			
+			r = JOptionPane.showOptionDialog(null, 
+											"O que deseja fazer agora?", 
+											"Escolha!", 
+											JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+											null, 
+											opcoes, 
+											opcoes[0]);
+			
+
+			//ADICIONAR LISTA
+			if(r == 0) {
+				AdicionarLista();
+			}
+			
+			if(r == 1)
+			{
+				CriarListaUnica();
+			}
+			
+			if(r == 2) 
+			{
+				ExcluirLista();
+			}
+		}while(r != 3);
+	
+
+		teclado.close();
+	}
+	
+	
+	public static void AdicionarLista() {
+		sala = JOptionPane.showInputDialog("Digite os números das salas, separando por um espaço: ");
+		strSalas.append(sala+"; ");
+		if(sala.length() > tamanhoMaior)
+			tamanhoMaior = sala.length();
+		qtListas++;
+		
+		do {
+			s = JOptionPane.showConfirmDialog(null, "Deseja adicionar uma nova lista?");
+			if(s == 0) 
+			{
+				sala = JOptionPane.showInputDialog("Digite as salas: ");
+				strSalas.append(sala+"; ");
+				if(sala.length() > tamanhoMaior)
+					tamanhoMaior = sala.length();
+				qtListas++;
+			}
+		}while(s == 0);
+	}
+	
+	
+	public static void CriarListaUnica() {
+		if(qtListas < 3) {
+			JOptionPane.showMessageDialog(null, "Você precisa inserir pelo menos três listas para efetuar essa ação!");
+		}
+		else {
+			String listas[] = new String [qtListas];
+			String Salas = strSalas.toString();
+			listas = Salas.split("; ");
+			int salasUniao[][] = new int[qtListas][tamanhoMaior];
+			
+			for(int i=0; i <qtListas; i++) {
+				for(int j=0; j < tamanhoMaior; j++) {
+					
+				}
+			}
+		}
+	}
+	
+	
+	public static void ExcluirLista() {
+		JOptionPane.showMessageDialog(null, "EXCLUINDO...");
+	}
+}
