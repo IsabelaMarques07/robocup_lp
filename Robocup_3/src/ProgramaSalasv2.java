@@ -32,7 +32,7 @@ public class ProgramaSalasv2
 		UIManager.put("OptionPane.buttonPadding", 1);//espaço entre os botoes
 		
 				do {
-					Object opcoes[] = { "Criar lista", 
+					Object opcoes[] = {"Criar lista", 
 										"Ter relação de salas", 
 										"Excluir uma lista", 
 										"Sair"};
