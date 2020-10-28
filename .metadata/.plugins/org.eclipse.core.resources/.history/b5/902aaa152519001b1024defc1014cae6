@@ -1,3 +1,4 @@
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.util.Random;
 import javax.swing.UIManager;
@@ -333,6 +334,7 @@ public class ProgramaSalasv3
 			int p=0; //posicao no vetor uniao
 			int sala; //Número da sala como variável inteira
 			int j;
+			boolean uniao= true;
 			
 			//Inserir os números no vetor uniao seguindo por coluna
 			for(int f=0; f < tamanhoMaior; f++) {

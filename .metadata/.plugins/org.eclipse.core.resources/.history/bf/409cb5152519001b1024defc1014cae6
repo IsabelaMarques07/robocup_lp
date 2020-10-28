@@ -1,3 +1,4 @@
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.util.Random;
 import javax.swing.UIManager;
@@ -5,7 +6,7 @@ import java.awt.*;
 
 import java.util.Scanner;
 
-public class ProgramaSalasv3 
+public class ProgramaSalasv4
 {
 	static String sala =""; 
 	static StringBuffer strSalas = new StringBuffer();
@@ -24,12 +25,12 @@ public class ProgramaSalasv3
 	public static void telaInicial() {
 		
 		UIManager.put("OptionPane.minimumSize", new Dimension(600, 100));// tamanho minimo da tela
-		UIManager.put("OptionPane.buttonPadding", 1);//espa√ßo entre os botoes
-		int escolha; //resposta do usu√°rio
+		UIManager.put("OptionPane.buttonPadding", 1);//espaÁo entre os botoes
+		int escolha; //resposta do usu·rio
 		
 				do {
 					Object opcoes[] = { "Criar lista", 
-										"Ter rela√ß√£o de salas",
+										"Ter relaÁ„o de salas",
 										"Sair"};
 					
 					escolha = JOptionPane.showOptionDialog(null, 
@@ -184,7 +185,7 @@ public class ProgramaSalasv3
 
 		if(opcaoEscolhida == salvar || opcaoEscolhida6 == salvar) { //SALVAR LISTA
 			if(tamanho < 5) {
-				JOptionPane.showMessageDialog(null, "Adicione mais "+(5-tamanho)+" salas, no m√≠nimo, para completar a lista!");
+				JOptionPane.showMessageDialog(null, "Adicione mais "+(5-tamanho)+" salas, no mÌnimo, para completar a lista!");
 				escolherAndar();
 			}
 			salvarLista(sala);
@@ -282,7 +283,7 @@ public class ProgramaSalasv3
 	
 	public static void criarListaUnica() {
 		if(qtListas < 3) {
-			JOptionPane.showMessageDialog(null, "Voc√™ precisa inserir pelo menos tr√™s listas para efetuar essa a√ß√£o!");
+			JOptionPane.showMessageDialog(null, "VocÍ precisa inserir pelo menos trÍs listas para efetuar essa aÁ„o!");
 		}
 		else {
 			
@@ -297,11 +298,11 @@ public class ProgramaSalasv3
 			}
 			
 			//mostrar tempo das sala
-			for(int i=0; i< tempoSalas.length; i++)
-				System.out.print(" - "+tempoSalas[i]);
+			//for(int i=0; i< tempoSalas.length; i++)
+				//System.out.print(" - "+tempoSalas[i]);
 			
 			//SALAS
-			//strSalas √© a StringBuffer com todas as listas
+			//strSalas È a StringBuffer com todas as listas
 			//Separar a strSalas em um vetor das listas --> vetListas
 			
 			//Transformar StringBuffer em String
@@ -313,10 +314,10 @@ public class ProgramaSalasv3
 			//Separar cada linha da vetListas em uma linha para separar cada sala --> vetSalas
 			String vetSalas[][] = new String[qtListas][tamanhoMaior];
 			
-			//N√∫mero total de salas
+			//N˙mero total de salas
 			int totalSalas=0;	
 			
-			//Criar String tempor√°ria para armazenar determinada linha do vetor para a inserir no vetor final
+			//Criar String tempor·ria para armazenar determinada linha do vetor para a inserir no vetor final
 			for(int l = 0; l < qtListas; l++) {
 				String strTemp[] = vetListas[l].split(" ");
 				
@@ -327,14 +328,15 @@ public class ProgramaSalasv3
 				
 			}
 
-			//Criar vetor √∫nico com quantidade total de salas
+			//Criar vetor ˙nico com quantidade total de salas
 			int uniaoSalas[] = new int [totalSalas];
 			
 			int p=0; //posicao no vetor uniao
-			int sala; //N√∫mero da sala como vari√°vel inteira
+			int sala; //N˙mero da sala como vari·vel inteira
 			int j;
+			boolean uniao= true;
 			
-			//Inserir os n√∫meros no vetor uniao seguindo por coluna
+			//Inserir os n˙meros no vetor uniao seguindo por coluna
 			for(int f=0; f < tamanhoMaior; f++) {
 				for(int g = 0; g < qtListas; g++) {
 					if(vetSalas[g][f] != null) {
@@ -345,15 +347,15 @@ public class ProgramaSalasv3
 							j++;
 						
 						if(j>= p) {
-							System.out.print("sala"+sala);
 							uniaoSalas[p++] = sala;
 							tempoTotal = tempoTotal + tempoSalas[sala-1];
-
+						
 						}
-
+						System.out.print(" - "+vetSalas[g][f]);
 						
 					}
 				}
+				System.out.println();
 			}
 			
 			StringBuffer strUniao = new StringBuffer();
@@ -370,13 +372,13 @@ public class ProgramaSalasv3
 			horas = tempoTotal/60;
 			minutos = tempoTotal % 60;
 			
-			System.out.println("Tempo total"+tempoTotal);
-			System.out.println("horas"+horas);
-			System.out.println("minutos"+minutos);
+			//System.out.println("\nTempo total"+tempoTotal);
+			//System.out.println("horas"+horas);
+			//System.out.println("minutos"+minutos);
 			
 			
 			JOptionPane.showMessageDialog(null, "Salas que precisam ser desinfetadas: "+strUniao);
-			JOptionPane.showMessageDialog(null, "Demorar√° "+horas+" horas: "+minutos+" minutos");
+			JOptionPane.showMessageDialog(null, "Demorar· "+horas+" horas: "+minutos+" minutos");
 			telaInicial();
 		}
 	}
